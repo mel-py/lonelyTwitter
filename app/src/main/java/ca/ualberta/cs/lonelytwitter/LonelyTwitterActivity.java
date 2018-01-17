@@ -12,6 +12,7 @@ import java.util.Date;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -54,7 +55,31 @@ public class LonelyTwitterActivity extends Activity {
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				R.layout.list_item, tweets);
 		oldTweetsList.setAdapter(adapter);
+		NormalTweet normalTweet = new NormalTweet("");
+		try {
+			normalTweet.setMessage("Hellow world!");
+		} catch (TweetTooLongException e) {
+			Log.e("Error -------->", "Message too long");
+		}
+
+		ImportantTweet importantTweet1 = new ImportantTweet("Hello world! This is important");
+		ImportantTweet importantTweet2 = new ImportantTweet("This is another important tweet");
+
+		NormalTweet normalTweet1 = new NormalTweet("This is not that important");
+		NormalTweet normalTweet2 = new NormalTweet("This is not that important either");
+
+		ArrayList<Tweet> tweetsList = new ArrayList();
+		tweetsList.add(normalTweet);
+		tweetsList.add(importantTweet1);
+		tweetsList.add(importantTweet2);
+		tweetsList.add(normalTweet1);
+		tweetsList.add(normalTweet2);
+
+		for (Tweet t: tweetsList) {
+			Log.d("Tweet Polymorphism", t.isImportant().toString());
+		}
 	}
+
 
 	private String[] loadFromFile() {
 		ArrayList<String> tweets = new ArrayList<String>();
