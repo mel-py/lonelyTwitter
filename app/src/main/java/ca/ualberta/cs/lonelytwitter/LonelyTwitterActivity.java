@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class LonelyTwitterActivity extends Activity {
 
@@ -68,7 +69,7 @@ public class LonelyTwitterActivity extends Activity {
 		NormalTweet normalTweet1 = new NormalTweet("This is not that important");
 		NormalTweet normalTweet2 = new NormalTweet("This is not that important either");
 
-		ArrayList<Tweet> tweetsList = new ArrayList();
+		ArrayList<Tweet> tweetsList = new ArrayList<Tweet>();
 		tweetsList.add(normalTweet);
 		tweetsList.add(importantTweet1);
 		tweetsList.add(importantTweet2);
@@ -78,6 +79,19 @@ public class LonelyTwitterActivity extends Activity {
 		for (Tweet t: tweetsList) {
 			Log.d("Tweet Polymorphism", t.isImportant().toString());
 		}
+
+		ArrayList <Tweetable> tweetableList = new ArrayList<Tweetable>();
+		tweetableList.add(normalTweet);
+		tweetableList.add(importantTweet1);
+		tweetableList.add(importantTweet2);
+		tweetableList.add(normalTweet1);
+		tweetableList.add(normalTweet2);
+
+		String messageOnScreen = "";
+		for (Tweetable t: tweetableList) {
+			messageOnScreen += t.getMessage() + "\n";
+		}
+		Toast.makeText(this, messageOnScreen, Toast.LENGTH_LONG).show();
 	}
 
 
