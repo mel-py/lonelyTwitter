@@ -1,3 +1,15 @@
+/*
+ * Tweet
+ *
+ * Version 1.0
+ *
+ * January 30, 2018
+ *
+ * Copyright (C) 2018 Melissa Buljubasic
+ * You may use, distribute or modify the code under terms and conditions of the Code of Student Behaviour at University of Alberta.
+ * You can find a copy of the license in this project. Otherwise please contact contact@abc.ca
+ */
+
 package ca.ualberta.cs.lonelytwitter;
 
 import java.io.BufferedReader;
@@ -27,6 +39,16 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+
+/**
+ * Main Activity class
+ * Lonely Twitter Implementation
+ *
+ * @author Melissa Buljubasic
+ * @Version 1.0
+ * @see Mood
+ * @see Tweet
+ */
 public class LonelyTwitterActivity extends Activity {
 
 	private static final String FILENAME = "tweets.sav";
@@ -85,6 +107,9 @@ public class LonelyTwitterActivity extends Activity {
 	}
 
 
+    /**
+     * Loads tweets saved in a file
+     */
 	private void loadFromFile() {
         try {
             FileInputStream fis = openFileInput(FILENAME);
@@ -104,7 +129,10 @@ public class LonelyTwitterActivity extends Activity {
             throw new RuntimeException();
         }
 	}
-	
+
+    /**
+     * Save all tweets to file
+     */
 	private void saveInFile() {
 		try {
 			FileOutputStream fos = openFileOutput(FILENAME,
